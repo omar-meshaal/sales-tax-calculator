@@ -1,5 +1,6 @@
 package com.ibm.bluemix.values;
 
+import com.ibm.bluemix.constants.Categories;
 import com.ibm.bluemix.constants.Delimiters;
 
 import java.util.ArrayList;
@@ -33,7 +34,6 @@ public class Product {
     int i = 0;
     for(String token : tokens) {
       switch(lineElements[i++]) {
-
         case DESCRIPTION:
           name = token.substring(2);
           quantity = Integer.parseInt(token.substring(0, token.indexOf(" ")));
@@ -47,10 +47,8 @@ public class Product {
           isImported = token.equalsIgnoreCase("Imported");
           break;
 
-
         default:
           break;
-
       }
     }
   }
@@ -75,7 +73,6 @@ public class Product {
     return quantity;
   }
 
-
   public double getTax() {
     return tax;
   }
@@ -85,15 +82,15 @@ public class Product {
   }
 
   public String getCategory() {
-    if(this.name.contains("book")) { return "Books"; }
-    else if(this.name.contains("chocolate")) { return "Food"; }
-    else if(this.name.contains("headache pill")) { return "Medical"; }
-    return "Other";
+    if(this.name.contains("book"))  return Categories.BOOKS;
+    if(this.name.contains("chocolate"))  return Categories.FOOD;
+    if(this.name.contains("headache pill"))  return Categories.MEDICAL;
+    return Categories.OTHER;
   }
 
   @Override
   public String toString() {
-    String isImported = this.isImported? " imported" : "";
-    return quantity + isImported+ " " + name + ": " + String.format("%.2f", price);
+    String isImported = this.isImported ? " imported" : "";
+    return quantity + isImported + " " + name + ": " + String.format("%.2f", price);
   }
 }
