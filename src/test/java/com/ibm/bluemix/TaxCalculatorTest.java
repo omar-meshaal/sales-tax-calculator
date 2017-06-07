@@ -4,7 +4,6 @@ import com.ibm.bluemix.constants.Delimiters;
 import com.ibm.bluemix.constants.FileFormats;
 import com.ibm.bluemix.values.Product;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -39,7 +38,7 @@ public class TaxCalculatorTest {
     Assert.assertEquals(16.49, taxedProducts.get(0).getPrice(), 0.01);
     Assert.assertEquals(20.89, taxedProducts.get(1).getPrice(), 0.01);
   }
-  @Ignore
+
   @Test
   public void fivePrencent_Tax_for_imported_Products() {
     List<Product> dummyProducts = new ArrayList<Product>();
@@ -50,7 +49,7 @@ public class TaxCalculatorTest {
     TaxCalculator taxCalculator = new TaxCalculator();
     List<Product> taxedProducts = taxCalculator.calculateTax(dummyProducts);
     Assert.assertEquals(10.50, taxedProducts.get(0).getPrice(), 0.01);
-    Assert.assertEquals(11.85, taxedProducts.get(1).getPrice(), 0.01);
+    Assert.assertEquals(11.80, taxedProducts.get(1).getPrice(), 0.01);
   }
 
 
